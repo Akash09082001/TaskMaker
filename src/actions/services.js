@@ -32,9 +32,8 @@ export const getTodos = async () => {
         const res = await fetch(apiUrl, { cache: "no-store", next: { tags: ['todos'] } });
         console.log(res.ok, res.status);
         if (!res.ok) {
-            throw new Error(res);
+            throw new Error('Internal Server Error');
         }
-
         return await res.json();
     } catch (error) {
         console.error("Failed to Fetch Todos:", error);
