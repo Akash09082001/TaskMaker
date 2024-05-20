@@ -1,7 +1,7 @@
 "use client"
 
 import useMediaQuery from '@/hooks/useMediaQuery';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '../ui/dialog';
 import { Button } from '../ui/button';
 import { Edit } from 'lucide-react';
@@ -9,9 +9,11 @@ import { Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, Dr
 import { cn } from '@/lib/utils';
 import EditTodoForm from '../molecules/EditTodoForm';
 
-const EditTodo = ({ className }) => {
+const EditTodo = ({ className, id }) => {
     const [open, setOpen] = useState(false);
     const isDeskTop = useMediaQuery("(min-width: 786px)");
+
+    const todoId = id;
 
     if (isDeskTop) {
         return (
@@ -26,7 +28,7 @@ const EditTodo = ({ className }) => {
                         <DialogTitle>Edit Your Todo</DialogTitle>
                         <DialogDescription>Modify existing tasks easily with our intuitive edit feature.</DialogDescription>
                     </DialogHeader>
-                    <EditTodoForm closeDialog={() => setOpen(false)} />
+                    <EditTodoForm id={todoId} closeDialog={() => setOpen(false)} />
                 </DialogContent>
             </Dialog>
         );
@@ -43,7 +45,7 @@ const EditTodo = ({ className }) => {
                     <DrawerTitle>Edit Your Todo</DrawerTitle>
                     <DrawerDescription>Modify existing tasks easily with our intuitive edit feature.</DrawerDescription>
                 </DrawerHeader>
-                <EditTodoForm className={"px-4"} closeDialog={() => setOpen(false)} />
+                <EditTodoForm id={todoId} className={"px-4"} closeDialog={() => setOpen(false)} />
                 <DrawerFooter>
                     <DrawerClose asChild>
                         <Button variant="outline">Cancel</Button>

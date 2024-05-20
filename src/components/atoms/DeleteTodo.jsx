@@ -1,16 +1,25 @@
 "use client"
 
-import React from 'react'
-import { Trash } from 'lucide-react'
-import { Button } from '../ui/button'
+import React from 'react';
+import { Trash } from 'lucide-react';
+import { Button } from '../ui/button';
+import { removeTodo } from '@/actions/services';
 
 const DeleteTodo = ({ id }) => {
 
-    return (
-        <Button variant="outline" >
-            <Trash className='h-[1rem] w-[1rem]' />
-        </Button>
-    )
-}
+    const handleDelete = async (e) => {
+        e.preventDefault();
+        await removeTodo(id);
+        window.location.reload();
+    };
 
-export default DeleteTodo
+    return (
+        <form onSubmit={handleDelete}>
+            <Button type="submit" variant="outline">
+                <Trash className='h-4 w-4' />
+            </Button>
+        </form>
+    );
+};
+
+export default DeleteTodo;

@@ -11,12 +11,12 @@ const Hero = () => {
             <div className="magicpattern"></div>
             <div className="flex absolute backdrop-blur-sm  w-full h-full ">
 
-                <div className="flex flex-col w-full h-fit my-auto gap-5 max-w-7xl mx-auto">
+                <div className="flex flex-col w-full h-fit my-auto gap-5 px-5 max-w-7xl mx-auto">
                     <div className="grid grid-cols-1 w-full gap-5 md:grid-cols-2">
                         <div className="flex flex-col gap-10 w-full">
                             <Logo />
                             <div className="flex flex-col w-fit gap-5">
-                                <h1 className='text-3xl font-bold'>Your Ultimate Todo Companion</h1>
+                                <h1 className='text-xl md:text-3xl font-bold'>Your Ultimate Todo Companion</h1>
                                 <span className='text-yellow-500 font-semibold text-lg'>Streamline Your Productivity with Ease</span>
                                 <p>TaskMaster simplifies task management with intuitive features and seamless collaboration, helping you stay organized and focused. Say goodbye to overwhelm and hello to productivity.</p>
                                 <div className="flex gap-5 w-full">

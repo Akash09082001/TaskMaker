@@ -9,7 +9,7 @@ const Navbar = () => {
             <div className="flex w-full px-5 py-3 max-w-7xl mx-auto">
                 <div className="grid grid-cols-2 w-full">
                     <div className="flex w-full justify-start items-center">
-                        <Link href="/dashboard">
+                        <Link href="/">
                             <Logo />
                         </Link>
                     </div>
