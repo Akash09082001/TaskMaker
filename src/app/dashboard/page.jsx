@@ -1,3 +1,4 @@
+"use server"
 
 import CreateTodo from '@/components/organisms/CreateTodo'
 import TodoList from '@/components/organisms/TodoList'
@@ -9,7 +10,7 @@ const page = () => {
             <div className="flex w-full fixed z-10 bottom-4 left-0 backdrop-blur-md px-4">
                 <CreateTodo />
             </div>
-            <div className="flex w-full">
+            <div className="flex w-full flex-grow">
                 <TodoList />
             </div>
         </div>

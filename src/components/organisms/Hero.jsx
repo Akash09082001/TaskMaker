@@ -23,9 +23,7 @@ const Hero = () => {
                                     <Button asChild className={cn("w-full max-w-36 px-10")} >
                                         <Link href="./dashboard" >Go To Dashboard</Link>
                                     </Button>
-                                    {/* <Button asChild className={cn("w-full max-w-36 px-10 bg-yellow-500 text-white hover:text-black")} >
-                                        <Link href="./sign-up" >Sign Up</Link>
-                                    </Button> */}
+
                                 </div>
                             </div>
                         </div>

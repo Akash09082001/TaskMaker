@@ -51,7 +51,6 @@ const EditTodoForm = ({ className, closeDialog, id }) => {
             if (res) {
                 console.log('Todo updated successfully');
                 closeDialog();
-                window.location.reload();
             } else {
                 throw new Error('Failed to update todo');
             }

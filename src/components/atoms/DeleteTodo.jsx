@@ -10,7 +10,6 @@ const DeleteTodo = ({ id }) => {
     const handleDelete = async (e) => {
         e.preventDefault();
         await removeTodo(id);
-        window.location.reload();
     };
 
     return (

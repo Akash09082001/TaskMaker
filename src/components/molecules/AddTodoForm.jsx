@@ -24,7 +24,6 @@ const AddTodoForm = ({ className, closeDialog }) => {
             } else {
                 await addTodo(title, description)
                 closeDialog();
-                window.location.reload();
             }
 
 
