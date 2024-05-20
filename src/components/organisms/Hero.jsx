@@ -21,7 +21,7 @@ const Hero = () => {
                                 <p>TaskMaster simplifies task management with intuitive features and seamless collaboration, helping you stay organized and focused. Say goodbye to overwhelm and hello to productivity.</p>
                                 <div className="flex gap-5 w-full">
                                     <Button asChild className={cn("w-full max-w-36 px-10")} >
-                                        <Link href="./dashboard" >Go To Dashboard</Link>
+                                        <Link href="/dashboard" >Go To Dashboard</Link>
                                     </Button>
 
                                 </div>

@@ -29,7 +29,7 @@ export const addTodo = async (title, description) => {
 export const getTodos = async () => {
     try {
         console.log(apiUrl);
-        const res = await fetch(apiUrl, { next: { tags: ['todos'] } });
+        const res = await fetch(apiUrl, { cache: "no-store", next: { tags: ['todos'] } });
         console.log(res.ok, res.status);
         if (!res.ok) {
             throw new Error(res);

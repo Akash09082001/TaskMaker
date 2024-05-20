@@ -1,4 +1,3 @@
-import { PlusIcon } from '@radix-ui/react-icons'
 import React from 'react'
 import CreateTodo from './CreateTodo'
 import { Card } from '../ui/card'

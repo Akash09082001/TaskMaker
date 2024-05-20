@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
                     <main className="flex w-full h-screen flex-col">
                         <Navbar />
                         <Separator />
-                        <section className="flex flex-grow max-w-7xl mx-auto px-5 w-full">
+                        <section className="flex flex-grow max-w-7xl mx-auto w-full">
                             {children}
                         </section>
                     </main>
