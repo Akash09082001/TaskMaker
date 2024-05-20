@@ -26,7 +26,6 @@ const AddTodoForm = ({ className, closeDialog }) => {
                 closeDialog();
             }
 
-
         } catch (error) {
             console.error("Error creating todo:", error);
             alert("Failed to create todo. Please try again.");

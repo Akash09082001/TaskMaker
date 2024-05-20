@@ -7,6 +7,32 @@ const apiUrl = baseUrl + "/api/todos";
 
 console.log(apiUrl);
 
+export const getTodos = async () => {
+    try {
+        console.log(apiUrl);
+        const res = await fetch(apiUrl, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            next: { tags: ['todos'] },
+            cache: "no-store"
+        });
+        console.log(res.ok, res.status);
+        if (!res.ok) {
+            throw new Error(res);
+        }
+        const data = await res.json();
+        return {
+            ok: res.ok,
+            todos: data.todos,
+        };
+    } catch (error) {
+        console.error("Failed to Fetch Todos:", error);
+        throw new Error('Failed to Fetch Todos');
+    }
+};
+
 export const addTodo = async (title, description) => {
     try {
         const res = await fetch(apiUrl, {
@@ -14,32 +40,20 @@ export const addTodo = async (title, description) => {
             headers: {
                 "Content-Type": "application/json"
             },
+            cache: "no-store",
             body: JSON.stringify({ title, description }),
         });
         if (!res.ok) {
             throw new Error("Internal Server Error")
         }
         revalidateTag('todos');
+        const responseData = await res.json();
+        return responseData;
     } catch (error) {
         console.error("Failed to Add Todo:", error);
         throw new Error('Failed to Add Todo');
     }
 }
-
-export const getTodos = async () => {
-    try {
-        console.log(apiUrl);
-        const res = await fetch(apiUrl, { cache: "no-store", next: { tags: ['todos'] } });
-        console.log(res.ok, res.status);
-        if (!res.ok) {
-            throw new Error(res);
-        }
-        return await res.json();
-    } catch (error) {
-        console.error("Failed to Fetch Todos:", error);
-        throw new Error('Failed to Fetch Todos');
-    }
-};
 
 export const getTodoById = async (id) => {
 
@@ -65,6 +79,7 @@ export const updateTodoById = async (id, newTitle, newDescription) => {
             headers: {
                 "Content-Type": "application/json"
             },
+            cache: "no-store",
             body: JSON.stringify({ title: newTitle, description: newDescription })
         });
 
@@ -73,7 +88,6 @@ export const updateTodoById = async (id, newTitle, newDescription) => {
         if (!res.ok) {
             throw new Error('Failed to Edit Todo By id');
         }
-
         revalidateTag('todos');
 
         const responseData = await res.json();
@@ -93,7 +107,7 @@ export const removeTodo = async (id) => {
         if (!res.ok) {
             throw new Error('Internal Server Error');
         }
-        revalidateTag("todos");
+        revalidateTag('todos');
 
         return { success: true, message: 'Todo removed successfully' };
 
