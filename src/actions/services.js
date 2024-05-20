@@ -1,6 +1,9 @@
 "use server"
 
-const apiUrl = process.env.API_URL
+const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000"
+const apiUrl = baseUrl + "/api/todos";
+
+console.log(apiUrl);
 
 export const addTodo = async (title, description) => {
     try {
