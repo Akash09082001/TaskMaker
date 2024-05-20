@@ -1,4 +1,3 @@
-"use server"
 
 import CreateTodo from '@/components/organisms/CreateTodo'
 import TodoList from '@/components/organisms/TodoList'

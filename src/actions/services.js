@@ -27,7 +27,6 @@ export const addTodo = async (title, description) => {
 export const getTodos = async () => {
     try {
         const res = await fetch(apiUrl, { cache: "no-store" });
-        console.log(res);
         if (!res.ok) {
             throw new Error('Internal Server Error');
         }
