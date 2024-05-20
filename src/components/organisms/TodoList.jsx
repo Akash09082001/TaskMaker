@@ -1,25 +1,14 @@
-"use client";
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
 import DeleteTodo from '../atoms/DeleteTodo';
 import EditTodo from './EditTodo';
 import { getTodos } from '@/actions/services';
 
-const TodoList = () => {
-    const [todos, setTodos] = useState([]);
+const TodoList = async () => {
 
-    useEffect(() => {
-        const fetchTodos = async () => {
-            try {
-                const response = await getTodos();
-                setTodos(response.todos || []);
-            } catch (error) {
-                console.error("Error fetching todos:", error);
-            }
-        };
-        fetchTodos();
-    }, []);
+    const response = await getTodos();
+    const todos = response.todos;
 
     return (
         <div className='grid grid-cols-1 md:grid-cols-2 gap-5 lg:grid-cols-3 w-full'>

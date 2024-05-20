@@ -1,5 +1,7 @@
 "use server"
 
+import { revalidateTag } from "next/cache";
+
 const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000"
 const apiUrl = baseUrl + "/api/todos";
 
@@ -17,7 +19,7 @@ export const addTodo = async (title, description) => {
         if (!res.ok) {
             throw new Error("Internal Server Error")
         }
-
+        revalidateTag('todos');
     } catch (error) {
         console.error("Failed to Add Todo:", error);
         throw new Error('Failed to Add Todo');
@@ -27,7 +29,7 @@ export const addTodo = async (title, description) => {
 export const getTodos = async () => {
     try {
         console.log(apiUrl);
-        const res = await fetch(apiUrl, { cache: "no-store" });
+        const res = await fetch(apiUrl, { cache: "no-store", next: { tags: ['todos'] } });
         console.log(res.ok, res.status);
         if (!res.ok) {
             throw new Error(res);
@@ -48,6 +50,7 @@ export const getTodoById = async (id) => {
         if (!res.ok) {
             throw new Error('Failed to Fetch Todo By id');
         }
+
         return await res.json();
 
     } catch (error) {
@@ -72,6 +75,8 @@ export const updateTodoById = async (id, newTitle, newDescription) => {
             throw new Error('Failed to Edit Todo By id');
         }
 
+        revalidateTag("todos");
+
         const responseData = await res.json();
         return responseData;
 
@@ -89,6 +94,8 @@ export const removeTodo = async (id) => {
         if (!res.ok) {
             throw new Error('Internal Server Error');
         }
+        revalidateTag("todos");
+
         return { success: true, message: 'Todo removed successfully' };
 
     } catch (error) {
