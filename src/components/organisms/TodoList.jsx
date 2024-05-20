@@ -12,13 +12,13 @@ const TodoList = async () => {
     const response = await getTodos();
     const todos = response.todos;
 
-    if (!todos || todos === 0) {
-        return (
-            <div className="flex w-full flex-grow flex-1 items-center justify-center">
-                <EmptyState />
-            </div>
-        )
-    }
+    // if (!todos || todos === 0) {
+    //     return (
+    //         <div className="flex w-full flex-grow flex-1 items-center justify-center">
+    //             <EmptyState />
+    //         </div>
+    //     )
+    // }
 
     return (
         <div className='grid grid-cols-1 md:grid-cols-2 gap-5 lg:grid-cols-3 w-full'>
