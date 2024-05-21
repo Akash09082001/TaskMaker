@@ -1,18 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { removeTodo } from "@/actions/todo";
-import EmptyState from "@/components/atoms/EmptyState";
-import TodoDialog from "@/components/molecules/TodoDialog";
-import { Button } from "@/components/ui/button";
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card";
 import { Trash } from "lucide-react";
+import EmptyState from "../atoms/EmptyState";
+import { removeTodo } from "@/actions/todo";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card";
+import TodoDialog from "../molecules/TodoDialog";
+import { Button } from "../ui/button";
 
 const Dashboard = ({ initialTodos }) => {
     const [todos, setTodos] = useState(initialTodos);
