@@ -21,7 +21,7 @@ const BackgroundSvg = props => {
 				<g
 					style={{ transformOrigin: "center center" }}
 					stroke="#383a57"
-					stroke-width="2"
+					strokeWidth="2"
 					mask="url(#b)"
 				>
 					<path
@@ -429,12 +429,12 @@ const BackgroundSvg = props => {
 					<radialGradient id="a">
 						<stop
 							offset="0"
-							stop-color="#fff"
+							stopColor="#fff"
 						/>
 						<stop
 							offset="1"
-							stop-color="#fff"
-							stop-opacity="0"
+							stopColor="#fff"
+							stopOpacity="0"
 						/>
 					</radialGradient>
 				</defs>
