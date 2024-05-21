@@ -1,5 +1,3 @@
-"use server"
-
 import { getTodos } from "@/actions/todo";
 import Dashboard from "@/components/organisms/Dashboard";
 
