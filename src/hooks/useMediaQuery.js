@@ -1,19 +1,19 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from "react"
 
-const useMediaQuery = (query) => {
-    const [matches, setMatches] = useState(false);
+const useMediaQuery = query => {
+	const [matches, setMatches] = useState(false)
 
-    useEffect(() => {
-        const mediaQuery = window.matchMedia(query);
-        setMatches(mediaQuery.matches);
+	useEffect(() => {
+		const mediaQuery = window.matchMedia(query)
+		setMatches(mediaQuery.matches)
 
-        const handler = (event) => setMatches(event.matches);
-        mediaQuery.addListener(handler);
+		const handler = event => setMatches(event.matches)
+		mediaQuery.addListener(handler)
 
-        return () => mediaQuery.removeListener(handler);
-    }, [query]);
+		return () => mediaQuery.removeListener(handler)
+	}, [query])
 
-    return matches;
-};
+	return matches
+}
 
-export default useMediaQuery;
+export default useMediaQuery
