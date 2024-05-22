@@ -81,7 +81,6 @@ export async function DELETE(request) {
 				{ status: 400 }
 			)
 		}
-
 		await connectToMongoDB()
 		await Todo.findByIdAndDelete(id)
 
