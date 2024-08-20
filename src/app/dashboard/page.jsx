@@ -1,15 +1,14 @@
 import CreateTodo from '@/components/organisms/CreateTodo'
 import TodoList from '@/components/organisms/TodoList'
-import React from 'react'
 
 const page = () => {
     return (
-        <div className='flex relative w-full h-full flex-col pb-12 pt-5 px-5 gap-5'>
-            <div className="flex w-full fixed z-10 bottom-4 left-0 backdrop-blur-md px-4">
-                <CreateTodo />
-            </div>
-            <div className="flex w-full flex-grow">
+        <div className='flex relative w-full flex-1 md:py-4 flex-col px-4 gap-4'>
+            <div className="flex w-full h-[calc(100%-50px)] overflow-y-scroll scrollbar-hide">
                 <TodoList />
+            </div>
+            <div className="flex w-full backdrop-blur-md">
+                <CreateTodo />
             </div>
         </div>
     )

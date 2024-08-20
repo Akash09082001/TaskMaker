@@ -1,8 +1,8 @@
+import Navbar from "@/components/organisms/Navbar";
+import { cn } from "@/lib/utils";
+import { ThemeProvider } from "next-themes";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "next-themes";
-import Navbar from "@/components/organisms/Navbar";
-import { Separator } from "@/components/ui/separator";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,17 +19,16 @@ export default function RootLayout({ children }) {
                 colorScheme: "dark",
             }}
         >
-            <body className={inter.className}>
+            <body className={cn("h-screen w-screen", inter.className)}>
                 <ThemeProvider
                     attribute='class'
                     defaultTheme='system'
                     enableSystem
                     disableTransitionOnChange
                 >
-                    <main className="flex w-full h-screen flex-col">
-                        <Navbar />
-                        <Separator />
-                        <section className="flex flex-grow max-w-7xl mx-auto w-full">
+                    <Navbar />
+                    <main className="flex relative w-full h-[calc(100%-65px)] pt-4">
+                        <section className="flex flex-1 max-w-7xl mx-auto w-full">
                             {children}
                         </section>
                     </main>
