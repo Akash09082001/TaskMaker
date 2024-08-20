@@ -2,10 +2,9 @@
 
 import { revalidateTag } from "next/cache";
 
-const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3002"
+const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3001"
 const apiUrl = baseUrl + "/api/todos";
 
-console.log(apiUrl);
 
 export const getTodos = async () => {
     try {
@@ -18,7 +17,6 @@ export const getTodos = async () => {
             next: { tags: ['todos'] },
             cache: "no-store"
         });
-        console.log(res.ok, res.status);
         if (!res.ok) {
             throw new Error(res);
         }
