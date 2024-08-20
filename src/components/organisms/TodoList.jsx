@@ -10,7 +10,7 @@ import EmptyState from './EmptyState';
 
 const TodoList = () => {
     const [todos, setTodos] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         setLoading(true)

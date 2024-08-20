@@ -86,7 +86,6 @@ export const updateTodoById = async (id, newTitle, newDescription) => {
         if (!res.ok) {
             throw new Error('Failed to Edit Todo By id');
         }
-        revalidateTag('todos');
 
         const responseData = await res.json();
         return responseData;
