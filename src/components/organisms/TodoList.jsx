@@ -10,7 +10,6 @@ import EmptyState from './EmptyState';
 
 const TodoList = () => {
     const [todos, setTodos] = useState([]);
-    const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -21,10 +20,10 @@ const TodoList = () => {
                 if (!res.ok) {
                     throw new Error("Failed to fetch todo list");
                 }
-                setTodos(res.todos);
+                const sortedTodos = res.todos.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
+                setTodos(sortedTodos);
                 setLoading(false)
             } catch (error) {
-                setError(error.message);
                 setLoading(false)
                 console.error("Failed to Fetch Todos:", error);
             }
