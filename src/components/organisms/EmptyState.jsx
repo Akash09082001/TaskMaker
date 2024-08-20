@@ -1,18 +1,22 @@
-import React from 'react'
-import CreateTodo from './CreateTodo'
-import { Card } from '../ui/card'
-import { Folder } from 'lucide-react'
+import Image from 'next/image'
 
 const EmptyState = () => {
     return (
-        <Card className="text-center w-full max-w-sm p-5 gap-5 flex flex-col backdrop-blur-sm">
-            <Folder className='mx-auto h-10 w-10' />
-            <strong className='text-xl'>No Todos Added</strong>
-            <p className="mt-1 text-sm text-gray-500">Get started by creating a New Todo</p>
-            <div className="mt-6">
-                <CreateTodo />
+        <div className="text-center w-full max-w-7xl p-5 gap-5 grid grid-cols-1 lg:grid-cols-2 backdrop-blur-sm">
+            <div className="flex flex-col gap-5 items-center justify-center w-full">
+                <strong className='text-xl md:text-2xl lg:text-3xl'>No Todos Added</strong>
+                <p className="text-sm md:text-base lg:text-lg text-gray-500">Get started by creating a New Todo</p>
             </div>
-        </Card>
+            <div className="flex w-full">
+                <div className="aspect-square w-full relative">
+                    <Image
+                        src={'/assets/banner-img/add-todo-banner.png'}
+                        alt='add todo banner'
+                        fill
+                    />
+                </div>
+            </div>
+        </div>
     )
 }
 
