@@ -35,14 +35,16 @@ const TodoList = () => {
         <>
             {
                 loading ? (
-                    <SkeletonCard />
+                    <div className="flex w-full flex-1">
+                        <SkeletonCard />
+                    </div>
                 ) : (
                     todos.length === 0 ? (
                         <div className="flex w-full flex-grow flex-1 items-center justify-center">
                             <EmptyState />
                         </div>
                     ) : (
-                        <div className='grid grid-cols-1 md:grid-cols-2 gap-5 h-fit lg:grid-cols-3 w-full'>
+                        <div className='grid grid-cols-1 md:grid-cols-2 gap-4 h-fit lg:grid-cols-3 w-full'>
                             {todos.map(todo => (
                                 <Card key={todo._id} className="backdrop-blur-sm h-full w-full">
                                     <CardHeader className="flex flex-row gap-2 items-center w-full">
@@ -51,7 +53,7 @@ const TodoList = () => {
                                         <DeleteTodo id={todo._id} />
                                     </CardHeader>
                                     <CardContent>
-                                        <CardDescription className="s scrollBar-hide">
+                                        <CardDescription className="scrollBar-hide">
                                             {todo.description}
                                         </CardDescription>
                                     </CardContent>
