@@ -1,5 +1,5 @@
 import { Button } from "../ui/button";
-import { Sheet, SheetClose, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from "../ui/sheet";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "../ui/sheet";
 import InputFieldTextAreaWithLabel from "./InputFieldTextAreaWithLabel";
 import InputFieldTextWithLabel from "./InputFieldTextWithLabel";
 
@@ -18,7 +18,7 @@ const SidebarTodo = ({ todo }) => {
                         Todo Details
                     </SheetTitle>
                 </SheetHeader>
-                <div className="flex  items-start p-4 h-[calc(100%-120px)] gap-4 flex-col w-full">
+                <div className="flex  items-start p-4 h-[calc(100%-10px)] gap-4 flex-col w-full">
                     <InputFieldTextWithLabel
                         label={"Title"}
                         id={"title"}
@@ -35,7 +35,7 @@ const SidebarTodo = ({ todo }) => {
                         disabled
                     />
                 </div>
-                <SheetFooter>
+                {/* <SheetFooter>
                     <SheetClose
                         asChild
                         className="w-full"
@@ -53,7 +53,7 @@ const SidebarTodo = ({ todo }) => {
                     >
                         Save changes
                     </Button>
-                </SheetFooter>
+                </SheetFooter> */}
             </SheetContent>
         </Sheet>
     )

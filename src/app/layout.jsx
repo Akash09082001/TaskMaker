@@ -1,4 +1,5 @@
 import Navbar from "@/components/organisms/Navbar";
+import { Toaster } from "@/components/ui/sonner";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "next-themes";
 import { Inter } from "next/font/google";
@@ -32,6 +33,7 @@ export default function RootLayout({ children }) {
                             {children}
                         </section>
                     </main>
+                    <Toaster />
                 </ThemeProvider>
             </body>
         </html>

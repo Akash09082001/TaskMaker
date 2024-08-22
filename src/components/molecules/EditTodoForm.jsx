@@ -1,11 +1,12 @@
 "use client"
 
-import React, { useEffect, useState } from 'react';
-import InputFieldTextWithLabel from './InputFieldTextWithLabel';
-import InputFieldTextAreaWithLabel from './InputFieldTextAreaWithLabel';
-import { cn } from '@/lib/utils';
-import { Button } from '../ui/button';
 import { getTodoById, updateTodoById } from '@/actions/services';
+import { cn } from '@/lib/utils';
+import { useEffect, useState } from 'react';
+import { Button } from '../ui/button';
+import { Skeleton } from '../ui/skeleton';
+import InputFieldTextAreaWithLabel from './InputFieldTextAreaWithLabel';
+import InputFieldTextWithLabel from './InputFieldTextWithLabel';
 
 const EditTodoForm = ({ className, closeDialog, id }) => {
     const [newId, setNewId] = useState('');
@@ -64,25 +65,39 @@ const EditTodoForm = ({ className, closeDialog, id }) => {
 
     return (
         <form onSubmit={handleSubmit} className={cn("grid items-start gap-4", className)}>
-            {loading && <div>Loading...</div>}
-            {error && <div className="text-red-500">{error}</div>}
-            <div className="grid w-full gap-5">
-                <InputFieldTextWithLabel
-                    labelText={"Edit Title"}
-                    inputId={"title"}
-                    inputType={"text"}
-                    inputPlaceholder={"Add Your Todo Title"}
-                    inputValue={newTitle}
-                    inputOnChange={handleTitle}
-                />
-                <InputFieldTextAreaWithLabel
-                    labelText={"Edit Description"}
-                    textareaId={"textarea"}
-                    textareaPlaceholder={"Add Your Todo Description..."}
-                    textareaValue={newDescription}
-                    textareaOnChange={handleDescription}
-                />
-            </div>
+            {
+                loading ? (
+                    <div className="grid w-full gap-5">
+                        <div className="flex w-full">
+                            <Skeleton className={"h-10 w-full"} />
+                        </div>
+                        <div className="flex w-full">
+                            <Skeleton className={"h-20 w-full"} />
+                        </div>
+                        <div className="flex w-full">
+                            <Skeleton className={"h-10 w-full"} />
+                        </div>
+                    </div>
+                ) : (
+                    <div className="grid w-full gap-5">
+                        <InputFieldTextWithLabel
+                            label={"Edit Title"}
+                            id={"title"}
+                            type={"text"}
+                            placeholder={"Add Your Todo Title"}
+                            value={newTitle}
+                            onChange={handleTitle}
+                        />
+                        <InputFieldTextAreaWithLabel
+                            label={"Edit Description"}
+                            teaId={"textarea"}
+                            placeholder={"Add Your Todo Description..."}
+                            value={newDescription}
+                            onChange={handleDescription}
+                        />
+                    </div>
+                )
+            }
             <div className="flex w-full">
                 <Button type="submit" className="w-full" disabled={loading}>
                     {loading ? "Updating..." : "Update Todo"}

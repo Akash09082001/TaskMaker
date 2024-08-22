@@ -1,11 +1,12 @@
 "use client"
 
-import React, { useState } from 'react'
-import InputFieldTextWithLabel from './InputFieldTextWithLabel'
-import InputFieldTextAreaWithLabel from './InputFieldTextAreaWithLabel'
-import { cn } from '@/lib/utils'
-import { Button } from '../ui/button'
 import { addTodo } from '@/actions/services'
+import { cn } from '@/lib/utils'
+import { useState } from 'react'
+import { toast } from 'sonner'
+import { Button } from '../ui/button'
+import InputFieldTextAreaWithLabel from './InputFieldTextAreaWithLabel'
+import InputFieldTextWithLabel from './InputFieldTextWithLabel'
 
 const AddTodoForm = ({ className, closeDialog }) => {
 
@@ -20,7 +21,7 @@ const AddTodoForm = ({ className, closeDialog }) => {
 
         try {
             if (!title || !description === "") {
-                alert("Title and description required")
+                toast.warning("Title and description required")
             } else {
                 await addTodo(title, description)
                 closeDialog();
@@ -28,7 +29,7 @@ const AddTodoForm = ({ className, closeDialog }) => {
 
         } catch (error) {
             console.error("Error creating todo:", error);
-            alert("Failed to create todo. Please try again.");
+            toast.warning("Failed to create todo. Please try again.");
         }
     }
 
@@ -37,20 +38,20 @@ const AddTodoForm = ({ className, closeDialog }) => {
             <div className="grid w-full gap-5">
 
                 <InputFieldTextWithLabel
-                    labelText={"Title"}
-                    inputId={"title"}
-                    inputType={"text"}
-                    inputPlaceholder={"Add Your Todo Title"}
-                    inputValue={title}
+                    label={"Title"}
+                    id={"title"}
+                    type={"text"}
+                    placeholder={"Add Your Todo Title"}
+                    value={title}
                     inputOnChange={handleTitle}
 
                 />
                 <InputFieldTextAreaWithLabel
-                    labelText={"Description"}
-                    textareaId={"textarea"}
-                    textareaPlaceholder={"Add Your Todo Description..."}
-                    textareaValue={description}
-                    textareaOnChange={handleDescription}
+                    label={"Description"}
+                    teaId={"textarea"}
+                    placeholder={"Add Your Todo Description..."}
+                    value={description}
+                    onChange={handleDescription}
                 />
             </div>
             <div className="flex w-full">
