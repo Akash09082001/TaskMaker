@@ -1,19 +1,19 @@
 "use client"
 
 import useMediaQuery from '@/hooks/useMediaQuery';
-import React, { useState } from 'react'
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '../ui/dialog';
-import { Button } from '../ui/button';
-import { Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from '../ui/drawer';
 import { cn } from '@/lib/utils';
+import { useState } from 'react';
 import AddTodoForm from '../molecules/AddTodoForm';
+import { Button } from '../ui/button';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '../ui/dialog';
+import { Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from '../ui/drawer';
 
 const CreateTodo = ({ className }) => {
     const [open, setOpen] = useState(false);
     const isDeskTop = useMediaQuery("(min-width: 786px)");
 
     return (
-        <div className='flex w-full'>
+        <div className='flex'>
             {isDeskTop ? (
                 <Dialog open={open} onOpenChange={setOpen}>
                     <DialogTrigger asChild>

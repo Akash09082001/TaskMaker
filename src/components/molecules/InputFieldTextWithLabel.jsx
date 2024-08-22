@@ -1,22 +1,26 @@
-import React from 'react'
-import { Label } from '../ui/label'
-import { Input } from '../ui/input'
+import { cn } from "@/lib/utils"
+import { Input } from "../ui/input"
+import { Label } from "../ui/label"
 
-const InputFieldTextWithLabel = ({ labelText, inputType, inputId, inputValue, inputOnChange, inputPlaceholder }) => {
+const InputFieldTextWithLabel = ({ label, id, className, ...props }) => {
     return (
-        <div className="grid w-full max-w-3xl items-center gap-1.5">
-            <Label htmlFor={inputId}>{labelText}</Label>
+        <div
+            className={cn(
+                "grid w-full max-w-3xl items-center gap-1.5",
+                className
+            )}
+        >
+            <Label htmlFor={id}>{label}</Label>
             <Input
-                value={inputValue}
-                onChange={inputOnChange}
-                type={inputType}
-                id={inputId}
-                placeholder={inputPlaceholder}
+                id={id}
+                {...props}
+                className="disabled:text-slate-500 disabled:opacity-100"
             />
         </div>
     )
 }
 
 export default InputFieldTextWithLabel
+
 
 

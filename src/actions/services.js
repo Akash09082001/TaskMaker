@@ -8,7 +8,6 @@ const apiUrl = baseUrl + "/api/todos";
 
 export const getTodos = async () => {
     try {
-        console.log(apiUrl);
         const res = await fetch(apiUrl, {
             method: 'GET',
             headers: {
@@ -111,5 +110,20 @@ export const removeTodo = async (id) => {
     } catch (error) {
         console.error("Failed to Remove Todo:", error);
         throw new Error('Failed to Remove Todos');
+    }
+}
+
+export const searchTodo = async (title) => {
+    try {
+        const res = await fetch(apiUrl + `?title=${title}`, { method: "GET", cache: "no-store" })
+        if (!res.ok) {
+            throw new Error('Internal Server Error');
+        }
+        const responseData = await res.json()
+        const filterByTitle = responseData.todos.filter((data) => data.title.toLowerCase().includes(title.toLowerCase()))
+        return filterByTitle
+    } catch (error) {
+        console.error("Failed to Fetch Todo:", error);
+        throw new Error('Failed to Fetch Todo');
     }
 }

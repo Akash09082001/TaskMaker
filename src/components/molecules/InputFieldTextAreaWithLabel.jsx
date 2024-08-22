@@ -1,16 +1,15 @@
-import React from 'react'
-import { Textarea } from '../ui/textarea'
+import { cn } from '@/lib/utils'
 import { Label } from '../ui/label'
+import { Textarea } from '../ui/textarea'
 
-const InputFieldTextAreaWithLabel = ({ labelText, textareaId, textareaValue, textareaOnChange, textareaPlaceholder }) => {
+const InputFieldTextAreaWithLabel = ({ label, id, className, ...props }) => {
     return (
-        <div className="grid w-full max-w-3xl items-center gap-1.5">
-            <Label htmlFor={textareaId}>{labelText}</Label>
+        <div className={cn("grid w-full gap-1.5", className)}>
+            <Label htmlFor={id}>{label}</Label>
             <Textarea
-                value={textareaValue}
-                onChange={textareaOnChange}
-                placeholder={textareaPlaceholder}
-                id={textareaId}
+                id={id}
+                {...props}
+                className="disabled:text-slate-500 h-full disabled:opacity-100"
             />
         </div>
     )
