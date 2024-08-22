@@ -31,8 +31,8 @@ const SearchBar = () => {
     return (
         <>
             <Button onClick={() => setOpen(true)} variant="outline" className="gap-2">
-                <span className="text-gray-500">Search</span>
                 <MagnifyingGlassIcon className="size-5 text-gray-500" />
+                <span className="text-gray-500">Search</span>
             </Button>
             <CommandDialog open={open} onOpenChange={setOpen} className="p-2">
                 <Command>

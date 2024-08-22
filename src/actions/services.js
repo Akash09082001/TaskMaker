@@ -2,7 +2,7 @@
 
 import { revalidateTag } from "next/cache";
 
-const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3001"
+const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000"
 const apiUrl = baseUrl + "/api/todos";
 
 

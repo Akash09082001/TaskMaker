@@ -43,7 +43,7 @@ const AddTodoForm = ({ className, closeDialog }) => {
                     type={"text"}
                     placeholder={"Add Your Todo Title"}
                     value={title}
-                    inputOnChange={handleTitle}
+                    onChange={handleTitle}
 
                 />
                 <InputFieldTextAreaWithLabel
